@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Razorpay Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  const payBtn = document.getElementById('payBtn');
+
+  payBtn.onclick = async function () {
+    const res = await fetch('http://localhost:5000/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: 100 })
+    });
+
+    const data = await res.json();
+
+    const options = {
+      key: 'your_key_id_here', // replace with your Razorpay key
+      amount: data.amount,
+      currency: data.currency,
+      order_id: data.id,
+      handler: function (response) {
+        alert("✅ Payment Successful\nPayment ID: " + response.razorpay_payment_id);
+      }
+    };
+
+    const razor = new Razorpay(options);
+    razor.open();
+  };
+</script>
+
+  <body class="font-sans bg-white text-gray-900">
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white p-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnU-ga5wm4DKvKfHNaMu1NWI_vMoX3Fbd1Q&s" alt="Logo" class="h-6" />
+        <ul class="flex space-x-6 text-sm">
+          <li><a href="#" class="hover:text-blue-300">Payments</a></li>
+          <li><a href="#" class="hover:text-blue-300">Banking+</a></li>
+          <li><a href="#" class="hover:text-blue-300">Payroll</a></li>
+          <li><a href="#" class="hover:text-blue-300">Support</a></li>
+        </ul>
+        <button class="bg-white text-blue-900 px-4 py-1 rounded hover:bg-gray-200">Log In</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-[#02042a] text-white py-20">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+        <div class="max-w-xl">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Power your finance, grow your business</h1>
+          <p class="text-lg mb-6">Accept payments, automate payouts, and everything in between.</p>
+          <button id="payBtn" class="bg-blue-500 px-6 py-3 text-white rounded-md hover:bg-blue-600">
+           Pay ₹100 Now
+          </button>
+
+          <button class="bg-blue-500 px-6 py-3 text-white rounded-md hover:bg-blue-600">Sign Up Now</button>
+
+        </div>
+        <div class="mt-10 md:mt-0">
+          <img src="https://d6xcmfyh68wv8.cloudfront.net/newsroom-content/uploads/2021/07/New-Project-18.jpg" alt="Hero Image" class="w-full max-w-md" />
+        </div>
+      </div>
+      <div>
+      <img src="encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT-tOqKeC51DB-14FM9iLnj-fmEQlZjJaK_w&s " alt="">
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Explore Razorpay Products</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+            <h3 class="text-xl font-semibold mb-2">Payment Gateway</h3>
+            <p class="text-sm text-gray-600">Accept payments from customers instantly via UPI, cards & wallets.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+            <h3 class="text-xl font-semibold mb-2">RazorpayX</h3>
+            <p class="text-sm text-gray-600">Automate vendor payouts, salaries & more with powerful banking tools.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+            <h3 class="text-xl font-semibold mb-2">Subscriptions</h3>
+            <p class="text-sm text-gray-600">Start & manage recurring payments for SaaS and services easily.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-6">
+      <div class="container mx-auto px-4 text-center text-sm">
+        &copy; 2025 Razorpay Clone. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
