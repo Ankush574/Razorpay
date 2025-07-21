@@ -7,7 +7,7 @@ Inspired by the original [Razorpay] website, this project mimics the design, lay
 
 ## 🔗 Live Preview
 
-[🌐 https://fancy-melba-038bbf.netlify.app/](#)  
+(https://fancy-melba-038bbf.netlify.app/)  
 
 
 
