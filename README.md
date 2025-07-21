@@ -6,14 +6,18 @@ Inspired by the original [Razorpay] website, this project mimics the design, lay
 ---
 
 ## 🔗 Live Preview
-[fancy-melba-038bbf.netlify.app]
+
+[🌐 https://fancy-melba-038bbf.netlify.app/](#)  
+
+
+
 
 
 ## 🛠 Tech Stack Used
 
 - ✅ HTML5  
 - 🎨 Tailwind CSS  
-- 🧠 JavaScript (if interactive elements added)  
+- 🧠 JavaScript  
 
 
 ---
@@ -37,7 +41,7 @@ Razorpay-Clone/
 - 📱 Fully responsive navbar with logo
 - 🧾 Payment features section (mocked)
 - 🎨 Smooth Tailwind utility-first design
-- 🌙 Dark background theme (like official Razorpay)
+- 🌙 Dark background theme 
 - 🧩 Interactive button hover states
 - 🧷 All assets optimized
 
